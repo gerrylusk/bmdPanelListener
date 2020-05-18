@@ -63,7 +63,7 @@ def EMsubscribe(): # subscribe to changes so we know when something else changes
 def EMunsubscribe(): # unsubscribe from the EM notice
   if myHost != "0.0.0.0":
     print("Unubscribing to aux change notices.\n")
-    response = EMrpc(EMhost, 'subscribe', '{"hostname":"' + myHost + '", "port":"9990", "notification":["AUXDestChanged"]}')
+    response = EMrpc(EMhost, 'unsubscribe', '{"hostname":"' + myHost + '", "port":"9990", "notification":["AUXDestChanged"]}')
     print(response)
   else:
     print("Can't unsubscribe to EM changes if my address is ", myHost)
