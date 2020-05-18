@@ -84,6 +84,7 @@ class MyTCPClientHandler(socketserver.StreamRequestHandler):
     if self.client_address[0] == EMhost:
       print("It's EventMaster!")
     else:
+      getEMauxes()
       msg = "PROTOCOL PREAMBLE:\nVersion: 2.5\n\nVIDEOHUB DEVICE:\nDevice present: true\nModel name: Blackmagic Compact Videohub\nFriendly name: XP 40x40\nUnique ID: a1b2c3d4e5f6\nVideo inputs: 40\nVideo processing units: 0\nVideo outputs: 16\nVideo monitoring outputs: 0\nSerial ports: 0\n\nINPUT LABELS:\n0 Input 1\n1 Input 2\n2 Input 3\n3 Input 4\n4 Input 5\n5 Input 6\n6 Input 7\n7 Input 8\n8 Input 9\n9 Input 10\n10 Input 11\n11 Input 12\n12 Input 13\n13 Input 14\n14 Input 15\n15 Input 16\n16 Input 17\n17 Input 18\n18 Input 19\n19 Input 20\n20 Input 21\n21 Input 22\n22 Input 23\n23 Input 24\n24 Input 25\n25 Input 26\n26 Input 27\n27 Input 28\n28 Input 29\n29 Input 30\n30 Input 31\n31 Input 32\n32 Input 33\n33 Input 34\n34 Input 35\n35 Input 36\n36 Input 37\n37 Input 38\n38 Input 39\n39 Input 40\n\nOUTPUT LABELS:\n0 Output 1\n1 Output 2\n2 Output 3\n3 Output 4\n4 Output 5\n5 Output 6\n6 Output 7\n7 Output 8\n8 Output 9\n9 Output 10\n10 Output 11\n11 Output 12\n12 Output 13\n13 Output 14\n14 Output 15\n15 Output 16\n16 Output 17\n17 Output 18\n18 Output 19\n19 Output 20\n20 Output 21\n21 Output 22\n22 Output 23\n23 Output 24\n24 Output 25\n25 Output 26\n26 Output 27\n27 Output 28\n28 Output 29\n29 Output 30\n30 Output 31\n31 Output 32\n32 Output 33\n33 Output 34\n34 Output 35\n35 Output 36\n36 Output 37\n37 Output 38\n38 Output 39\n39 Output 40\n\n"+vOutputMessage(vRouting)
       print("It must be a BMD panel. Sending preamble.")
       self.request.sendall(msg.encode())
@@ -112,7 +113,6 @@ class MyTCPClientHandler(socketserver.StreamRequestHandler):
         self.request.sendall(msg.encode())
 
 if __name__ == "__main__":
-  getEMauxes()
   TCPServerInstance = socketserver.ThreadingTCPServer((myHost, BMDport), MyTCPClientHandler)
   TCPServerInstance.serve_forever()  
 
