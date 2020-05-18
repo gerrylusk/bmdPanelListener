@@ -10,7 +10,7 @@
 ##
 
 EMhost = '192.168.0.175' # the address of the EM processor to change its auxes
-myHost = '192.168.0.111' # my own address to listen. Also used for EM subscription
+myHost = '0.0.0.0' # my own address to listen. Also used for EM subscription
 BMDport = 9990     # the port on which the panel talks
 vRouting = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] # This holds the routing table
 
